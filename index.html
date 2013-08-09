@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <title>Plot my kwh - Afshin Mokhtari</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/app.css" rel="stylesheet" media="screen">    
+  </head>
+  <body>
+    <h1>kwh usage</h1>
+    <!-- the Log -->
+    <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <span class="log-stats"><span class="badge">0</span></span>
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">LOG - Click to collapse/open</a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse in">
+                <div id="logContent" class="accordion-inner">
+                This is where log message will go.  Hooray.
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Calendar Heat Charts -->
+    <div id="totalUsage"></div>
+    <div id="alwaysOn"></div>
+
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>    
+    <script src="app/utils.js"></script>    
+    <script src="app/app-kwh.js"></script>
+  </body>
+</html>

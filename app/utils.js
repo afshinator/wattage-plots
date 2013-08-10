@@ -49,38 +49,29 @@ var kwh = (function ($, my) {
         var active$     = accordion$.find("#collapseOne");
         var count$      = accordion$.find(".log-stats:eq(0) span");
 
-        function message(msg, bWarn, bIncrement) {
+        function message(msg, bIncrement, wrapStr) {
             var count = -1;
 
             if (typeof bIncrement === "undefined" || bIncrement === null ) {    // default is true
                 bIncrement = true;
             }
 
-            bWarn = bWarn || false;             // default is that this is not a warning message
 
             if ( bIncrement === true ) {
                 count = ( count$.text() ) * 1;  // multiply casts it to number
                 count += 1;
                 count$.text(count);
 
-                msg = '<strong>Data item ' + count + '</strong> : ' + msg;
+                msg = '<strong>Data for day ' + count + '</strong> : ' + msg;
             }
 
-            if ( bWarn === true ) {
-                msg = my.label("warning", msg);
-            } else {
-                /*
-                if ( bIncrement === true ) {
-                    msg = my.label("success", msg);
-                }
-                */
+            if ( wrapStr ) {
+                msg = my.label(wrapStr, msg);
             }
 
             msg = '<p>' + msg + '</p>';
 
             txt$.append(msg);
-
-
         }
 
         return {

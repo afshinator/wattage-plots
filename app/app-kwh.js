@@ -60,7 +60,12 @@ var kwh = (function ($, my) {
         var min = domainMin;
         var max = domainMax;
 
-        var svg = d3.select(el)
+
+//        var svg = d3.select(el)
+        var svg = d3.select("body")
+            .append("div")
+            .attr("id", el)
+            .append("h3").text(title)
             .selectAll("svg")
             .data(d3.range(my.app.beginYear, my.app.endYear))
             .enter()
@@ -114,12 +119,11 @@ var kwh = (function ($, my) {
             rect.filter(function(d) { return d in data; })
                 // set the class on the box based on value of rollup function above        
                 .attr("class", function(d) {
-                  // d is a date, data[d] is a value somewhere between 0 and 300ish
                   //my.log.msg( d + ' : ' + d3.round(data[d]) + ' --> ' + color(data[d]));
                   return "day " + color(d3.round(data[d]));
                   })
               .select("title")
-              .text(function(d) { return d + ": " + d3.round(data[d]); });   // set the svg title tag which becomes the mouseover text
+              .text(function(d) { return d + ": " + d3.round(data[d],2); });   // set the svg title tag which becomes the mouseover text
         }
 
 
@@ -155,6 +159,14 @@ var kwh = (function ($, my) {
         var highest = 0;
         var highestDay;         // string; will be what day had the highest total usage
 
+        var checkBounds = function(total, d) {
+            if ( total > highest) {
+                highest = total;
+                highestDay = parseDateField(d[0][" Datetime Midpoint"]);
+            }
+        };
+
+
         var totalUsage = my.chart("Total of all energy used per day", "#totalUsage", 0, 270);
 
         totalUsage.parseData( keyFx, function(d) {
@@ -178,19 +190,28 @@ var kwh = (function ($, my) {
                 }
 
                 // my.log.msg(d[0][" Datetime Midpoint"] + ' length of d ' + d.length + ' day total:'+total);
-
-                if ( total > highest) {
-                    highest = total;
-                    highestDay = parseDateField(d[0][" Datetime Midpoint"]);
-                }
-
+                checkBounds(total, d);
                 return total;
         }, csv);
 
-        d3.select("#totalUsage").append("p").text('------ Max total usage : ' + highest + ' on ' + highestDay);
-
-        my.log.msg( '------ Max total usage : ' + highest + ' on ' + highestDay, false, "info" );
         totalUsage.populateChart();
+        d3.select("body").append("p").text('------ Max total usage : ' + d3.round(highest,2) + ' on ' + highestDay);
+
+        highest = 0;
+        var totalAlwaysOn = my.chart("Total of all samples per day of Always-On", '#totalAlwaysOn', 4.7, 15.95);
+        totalAlwaysOn.parseData( keyFx, function(d) {
+            var total = 0; var j;
+
+            for (j = 0; j < d.length; j += 1) {
+                total += d[j]["# Always On"] * 1;
+            }
+            checkBounds(total, d);
+            // my.log.msg('-----===> '+total, false);
+            return total;
+        }, csv);
+        totalAlwaysOn.populateChart();
+        d3.select("body").append("p").text('------ Max total usage : ' + d3.round(highest,2) + ' on ' + highestDay);
+
     });
 
 // --------------------

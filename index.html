@@ -8,26 +8,35 @@
     <link href="css/app.css" rel="stylesheet" media="screen">    
   </head>
   <body>
-    <h1>kwh usage</h1>
-    <!-- the Log -->
-    <div class="accordion" id="accordion2">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                <span class="log-stats"><span class="badge">0</span></span>
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">LOG - Click to collapse/open</a>
-            </div>
-            <div id="collapseOne" class="accordion-body collapse in">
-                <div id="logContent" class="accordion-inner"></div>
+    <div class="row-fluid">
+        <div class="span12">
+            <h1>Plot my electrical (kwh) Usage</h1>
+            <h2>Data pulled in (csv) from file, and presented graphically</h2>
+            <p>The calendar layout is from this <a href="http://bl.ocks.org/mbostock/4063318" target="_new">D3 example</a>.  I adapted the code to chew on my data and also allow for multiple criteria for the display.</p>
+            <p>Mouse-over individual boxes for a summation of the day.</p>
+            <p>White boxes indicate no data.  The darker the box, the higher the kwh usage of that day.  The first graph shows totals of all electrical usage that day.</br>
+            The second graph shows the total for all appliances that are constantly on, ...</p>
+            <p></p>
+            <!-- the Log -->
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <span class="log-stats"><span class="badge">0</span></span>
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">LOG - Click to collapse/open</a>
+                    </div>
+                    <div id="collapseOne" class="accordion-body collapse in">
+                        <div id="logContent" class="accordion-inner"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Calendar Heat Charts -->
-
     <!-- <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script> -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/d3.min.js"></script>    
     <script src="app/utils.js"></script>    
     <script src="app/app-kwh.js"></script>
+    <!-- Calendar Heat Charts -->
   </body>
 </html>

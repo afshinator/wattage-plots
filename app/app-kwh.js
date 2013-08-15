@@ -2,7 +2,7 @@
 //
 var kwh = (function ($, my) {
 
-    var INPUTFILE = "plotwatt.csv";
+    var INPUTFILE = "./data/plotwatt.csv";
 
 
     // App-wide global vars
@@ -46,6 +46,7 @@ var kwh = (function ($, my) {
     //
     my.chart = function(title, el, domainMin, domainMax) {
         var desc = title;
+        var uiElt = el;
         var data = {};
         // Create a scale with a discrete (rather than continuous) range so we can map input to
         // a relatively small number of color options.  The range is one of 11 possible color values.
@@ -60,8 +61,10 @@ var kwh = (function ($, my) {
         var min = domainMin;
         var max = domainMax;
 
+        var highest = 0;
+        var highestDay;         // string; will be what day had the highest total usage
 
-//        var svg = d3.select(el)
+
         var svg = d3.select("body")
             .append("div")
             .attr("id", el)
@@ -124,8 +127,13 @@ var kwh = (function ($, my) {
                   })
               .select("title")
               .text(function(d) { return d + ": " + d3.round(data[d],2); });   // set the svg title tag which becomes the mouseover text
+
+              return this;
         }
 
+        function outputResults() {
+            d3.select('body').append("p").text('------ Max total usage : ' + d3.round(this.highest,2) + ' on ' + this.highestDay);
+        }
 
         return {
             color   : color,            // fx that will return one of 11 classes to be applied to each day box
@@ -133,10 +141,14 @@ var kwh = (function ($, my) {
             dmin    : domainMin,        // used to instantiate each chart, needed for color fx
             dmax    : domainMax,        // same as above
             data    : data,             // will hold the associative array that represents data read in
+            el      : uiElt,
             svg     : svg,              // for D3
             rect    : rect,             // for D3
+            highest : highest,
+            highestDay: highestDay,
             parseData : parseData,
-            populateChart : populateChart
+            populateChart : populateChart,
+            outputResults : outputResults
         };
 
     };
@@ -155,20 +167,38 @@ var kwh = (function ($, my) {
             return parseDateField(d[" Datetime Midpoint"]);
         };
 
-    d3.csv(INPUTFILE, function(error, csv) {           // callback gets called with parsed rows
-        var highest = 0;
-        var highestDay;         // string; will be what day had the highest total usage
+    my.log.msg('AlwaysOn -- Heating & A/C -- Refrigeration -- Dryer -- Cooking -- Other:', false);
 
-        var checkBounds = function(total, d) {
-            if ( total > highest) {
-                highest = total;
-                highestDay = parseDateField(d[0][" Datetime Midpoint"]);
+    //
+    // Read in file, build and feed data to charts running totals for each column (appliance type)
+    // 
+    d3.csv(INPUTFILE, function(error, csv) {           // callback gets called with parsed rows
+        var checkBounds = function(that, total, d) {
+            if ( total > that.highest) {
+                that.highest = total;
+                that.highestDay = parseDateField(d[0][" Datetime Midpoint"]);
             }
         };
 
+        var runSimpleDailyTotalChart = function(id, title, el, minVal, MaxVal, column) {
+            var that;
+            id = my.chart(title, el, minVal, MaxVal);
+            that = id;
+            id.parseData( keyFx, function(d) {  // generic rollup fx that adds all samples for specified column on this day
+                var total = 0; var j;
+
+                for (j = 0; j < d.length; j += 1) {
+                    total += d[j][column] * 1;
+                }
+                checkBounds(that, total, d);
+                // my.log.msg('-----===> '+total, false);
+                return total;
+            }, csv);
+            id.populateChart().outputResults();
+        };
 
         var totalUsage = my.chart("Total of all energy used per day", "#totalUsage", 0, 270);
-
+        var that = totalUsage;
         totalUsage.parseData( keyFx, function(d) {
             // Summarizes all the leaf nodes in the nest - 
             // Since the key divides up the data by date, the leaf nodes are the (usually) 4 rows of data per day
@@ -190,27 +220,31 @@ var kwh = (function ($, my) {
                 }
 
                 // my.log.msg(d[0][" Datetime Midpoint"] + ' length of d ' + d.length + ' day total:'+total);
-                checkBounds(total, d);
+                checkBounds(that, total, d);
                 return total;
         }, csv);
 
-        totalUsage.populateChart();
-        d3.select("body").append("p").text('------ Max total usage : ' + d3.round(highest,2) + ' on ' + highestDay);
+        totalUsage.populateChart().outputResults();
 
-        highest = 0;
-        var totalAlwaysOn = my.chart("Total of all samples per day of Always-On", '#totalAlwaysOn', 4.7, 15.95);
-        totalAlwaysOn.parseData( keyFx, function(d) {
-            var total = 0; var j;
+        // 
+        // Now run the charts for totals of the different 'columns'
+        var totalAlwaysOn;
+        runSimpleDailyTotalChart(totalAlwaysOn, "Total of all samples per day of Always-On", '#totalAlwaysOn', 4.7, 15.95, "# Always On");
 
-            for (j = 0; j < d.length; j += 1) {
-                total += d[j]["# Always On"] * 1;
-            }
-            checkBounds(total, d);
-            // my.log.msg('-----===> '+total, false);
-            return total;
-        }, csv);
-        totalAlwaysOn.populateChart();
-        d3.select("body").append("p").text('------ Max total usage : ' + d3.round(highest,2) + ' on ' + highestDay);
+        var totalTempCtrl;
+        runSimpleDailyTotalChart(totalTempCtrl, "Total of all samples per day for Heating & A/C", '#totalTemp', 0, 201, " Heating & A/C");
+
+        var totalRefrig;
+        runSimpleDailyTotalChart(totalRefrig, "Total of all samples per day for Refrigeration", '#totalFridge', 0, 11, " Refrigeration");
+
+        var totalDryer;
+        runSimpleDailyTotalChart(totalDryer, "Total of all samples per day for the Dryer", '#totalDryer', 0, 40, " Dryer");
+
+        var totalCooking;
+        runSimpleDailyTotalChart(totalCooking, "Total of all samples per day for Cooking", '#totalCook', 0, 26, " Cooking");
+
+        var totalOther;
+        runSimpleDailyTotalChart(totalOther, "Total of all samples per day for other electrical usage...", '#totalOther', 0, 13, " Other");
 
     });
 

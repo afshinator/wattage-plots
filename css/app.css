@@ -1,5 +1,5 @@
 body {
-  background: #eee;
+  background: url( ../img/ridge.gif ) repeat; /* eee */
   /* font: 10px sans-serif; */
   shape-rendering: crispEdges;
 }
@@ -15,7 +15,15 @@ body {
   stroke-width: 2px;
 }
 
-/* d3 colors 
+
+.CHChart {
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.ctr { text-align: center; }
+
+/* D3 demo colors 
 .RdYlGn .q0-11{fill:rgb(165,0,38)}
 .RdYlGn .q1-11{fill:rgb(215,48,39)}
 .RdYlGn .q2-11{fill:rgb(244,109,67)}
@@ -45,22 +53,6 @@ body {
 
 
 
-
-
-/*
-.RdYlGn .q0-11{fill:rgb(4, 34, 28)}
-.RdYlGn .q1-11{fill:rgb(10, 66, 29)}
-.RdYlGn .q2-11{fill:rgb(10, 79, 15)}
-.RdYlGn .q3-11{fill:rgb(10, 105, 10)}
-.RdYlGn .q4-11{fill:rgb(45, 90, 10)}
-.RdYlGn .q5-11{fill:rgb(80, 85, 10)}
-.RdYlGn .q6-11{fill:rgb(115, 78, 10)}
-.RdYlGn .q7-11{fill:rgb(150, 65, 10)}
-.RdYlGn .q8-11{fill:rgb(185, 52, 10)}
-.RdYlGn .q9-11{fill:rgb(220, 40, 10)}
-.RdYlGn .q10-11{fill:rgb(255, 28, 10)}
-*/
-
 .accordion {
 	  font: 14px sans-serif;
 }
@@ -76,11 +68,46 @@ body {
     padding-top:5px;
 }
 
-#logContent {				/* the log area - accordion twitter widget content div */
-	background: #ddd;
+
+.accordion-inner {          /* All accordion inner areas */
+  -webkit-box-shadow: inset 0px 0px 8px 3px rgba(0, 0, 0, .3);
+  box-shadow: inset 0px 0px 8px 3px rgba(0, 0, 0, .3);  
+
+  -webkit-border-radius: 7px;
+    border-radius: 7px;
+}
+
+
+#logContent {				       /* the log section  - accordion twitter widget content div */
+	background: #999;
 	height: 300px;
 	overflow: auto;			/* add scroll bars */
 }
+
+#stackedBarChart {          /* the Stacked Bar Chart section */
+  background: #999;
+    text-align: center;
+
+}
+
+#stackedBarChart svg {
+  font: 10px sans-serif;
+  font-color: white;
+}
+
+
+
+
+/* general */
+a:link, a:visited {
+  color : rgb(86,0,38);
+  text-decoration: none;
+}
+
+a:hover {
+    color: rgb(252,78,42);
+}
+
 
 
 /*  bootstrap */

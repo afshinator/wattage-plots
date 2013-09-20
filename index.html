@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <html>
   <head>
-    <title>Plot my kwh - Afshin Mokhtari</title>
+    <title>Quick & Dirty kwh Use Visualizations- by Afshin Mokhtari</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/app.css" rel="stylesheet" media="screen">    
@@ -10,34 +10,66 @@
   <body>
     <div class="row-fluid">
         <div class="span12">
-            <h1>Plot my electrical (kwh) Usage</h1>
-            <h2>Data pulled in (csv) from file, and presented graphically</h2>
-            <p>The calendar layout is from this <a href="http://bl.ocks.org/mbostock/4063318" target="_new">D3 example</a>.  I adapted the code to chew on my data and also allow for multiple criteria for the display.</p>
-            <p>Mouse-over individual boxes for a summation of the day.</p>
-            <p>White boxes indicate no data.  The darker the box, the higher the kwh usage of that day.  The first graph shows totals of all electrical usage that day.</br>
-            The second graph shows the total for all appliances that are constantly on, ...</p>
-            <p></p>
-            <!-- the Log -->
+            <h1>Electrical (kwh) Usage Visualizations</h1>
+            <h3>of data from PlotWatt file</h3>
+            <p>The Calendar Heat Maps below (inspired by <a href="http://bl.ocks.org/mbostock/4063318" target="_new">D3 example</a>) gives you quick answers to:<br>
+            <ul><li>how much does the usage vary?</li>
+            <li>when are the peak/low usage dates?</li>
+            <li>what are the patterns for peak/low dates?</li></ul>
+            The first one shows a total of all usage, per day.  The next 6 show total usage per day of individual appliance types.</p>          
+            <p>The Stacked Bar Chart helps you see the range of usage amounts per day, and also the relative contribuations of each appliance type.</p>
+            <h4>Each Box represents one day.  
+            The darker the color of the box, the higher the usage.
+            Mouse-over boxes to see actual numbers.</h4>                 
+                
+            </div>
+            <div id="dailyTotals">
+            </div>
             <div class="accordion" id="accordion2">
                 <div class="accordion-group">
                     <div class="accordion-heading">
                         <span class="log-stats"><span class="badge">0</span></span>
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">LOG - Click to collapse/open</a>
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Daily Totals (and error reports)</a>
                     </div>
-                    <div id="collapseOne" class="accordion-body collapse in">
+                    <div id="collapseOne" class="accordion-body collapse">
                         <div id="logContent" class="accordion-inner"></div>
                     </div>
                 </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                        Stacked Bar Chart View of Daily Totals
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="accordion-body collapse">
+                        <div id="stackedBarChart" class="accordion-inner">
+                            Mouse-over the bars for dates.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                        Normalized Stacked Bar Chart View of % Variance in kwh use 4 six-hour periods per day
+                        </a>
+                    </div>
+                    <div id="collapseThree" class="accordion-body collapse">
+                        <div id="normalizedBarChart" class="accordion-inner">
+                            Mouse-over the bars for dates.
+                        </div>
+                    </div>
+                </div>                
             </div>
         </div>
     </div>
+
     <!-- <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script> -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/d3.min.js"></script>    
+    <script src="js/d3.min.js"></script>
     <script src="app/utils.js"></script>
-    <script src="app/calendarChart.js"></script>   
+    <script src="app/calHeatChart.js"></script>
+    <script src="app/sBarChart.js"></script>    
     <script src="app/app-kwh.js"></script>
-    <!-- Calendar Heat Charts -->
   </body>
 </html>

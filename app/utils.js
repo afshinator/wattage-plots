@@ -6,7 +6,7 @@ var kwh = (function ($, my) {
 
     // 
     // Wrap txt with a <span> for Bootstrap class that format the text nicely
-    // see http://twitter.github.io/bootstrap/components.html#labels-badges
+    // see http://getbootstrap.com/2.3.2/components.html#labels-badges
     // Assumes: logging system is up.
     my.label = function(label, txt) {
         var wrappedTxt = '<span class="label';
@@ -62,7 +62,7 @@ var kwh = (function ($, my) {
                 count += 1;
                 count$.text(count);
 
-                msg = '<strong>Data for day ' + count + '</strong> : ' + msg;
+               // msg = '<strong>' + count + ': Daily Totals</strong> : ' + msg;
             }
 
             if ( wrapStr ) {
@@ -81,7 +81,18 @@ var kwh = (function ($, my) {
     }();
 
 
+    // http://javascriptissexy.com/oop-in-javascript-what-you-need-to-know/
+    // Create a new instance of the superclass and make the subclass prototype point to it.
+    // Call in constructor method, after apply(this, args) call to superclass 
+    my.inheritPrototype = function(childObj, parentObj) {
+        // Crockford’s style to copy properties & methods from the parent onto the child
+ 
+        // copyOfParent object gets everything the parentObject has 
+        var copyOfParent = Object.create(parentObj.prototype);
 
+        // Then we set the childObject prototype to copyOfParent, so that the childObject can in turn inherit everything from copyOfParent (from parentObject)
+        childObj.prototype = copyOfParent;
+    };
 
 
 

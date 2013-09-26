@@ -1,75 +1,100 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<html>
-  <head>
-    <title>Quick & Dirty kwh Use Visualizations- by Afshin Mokhtari</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+    <title>Quick & dirty kwh use visualizations- by Afshin Mokhtari</title>
+    <meta charset=utf-8>
+    <meta name="description" content="Reads .csv file with kwh usage and graphically displays the data">
+    <meta name="author" content="Afshin Mokhtari">    
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/app.css" rel="stylesheet" media="screen">    
-  </head>
-  <body>
-    <div class="row-fluid">
-        <div class="span12">
-            <h1>Electrical (kwh) Usage Visualizations</h1>
-            <h3>of data from PlotWatt file</h3>
-            <p>The Calendar Heat Maps below (inspired by <a href="http://bl.ocks.org/mbostock/4063318" target="_new">D3 example</a>) gives you quick answers to:<br>
-            <ul><li>how much does the usage vary?</li>
-            <li>when are the peak/low usage dates?</li>
-            <li>what are the patterns for peak/low dates?</li></ul>
-            The first one shows a total of all usage, per day.  The next 6 show total usage per day of individual appliance types.</p>          
-            <p>The Stacked Bar Chart helps you see the range of usage amounts per day, and also the relative contribuations of each appliance type.</p>
-            <h4>Each Box represents one day.  
-            The darker the color of the box, the higher the usage.
-            Mouse-over boxes to see actual numbers.</h4>                 
-                
+    <link href="css/app.css" rel="stylesheet" media="screen">
+
+    <link rel="shortcut icon" href="img/favicon.ico">    
+</head>
+<body>
+    <header class="container">
+        <h1 class="text-center">Electrical (kwh) Usage Visualizations</h1>
+        <h3 class="text-center">of data from PlotWatt file - by Afshin Mokhtari</h3>
+        <div class="row">
+            <div class="col-md-offset-1 col-xs-6">
+                <p>Use the stacked <strong>Bar Chart</strong> to see<br>
+                <ul><li>the range of usage amounts per day,</li>
+                <li>the relative contributions of each appliance type.</li></ul>
+                <p>The <strong>Calendar Heat Maps</strong> (inspired by <a href="http://bl.ocks.org/mbostock/4063318" target="_blank">D3 example</a>) gives you quick answers to:<br>
+                <ul><li>how much does the usage vary?</li>
+                <li>when are the peak/low usage dates?</li>
+                <li>what are the patterns for peak/low dates?</li></ul>
             </div>
-            <div id="dailyTotals">
-            </div>
-            <div class="accordion" id="accordion2">
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <span class="log-stats"><span class="badge">0</span></span>
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Daily Totals (and error reports)</a>
-                    </div>
-                    <div id="collapseOne" class="accordion-body collapse">
-                        <div id="logContent" class="accordion-inner"></div>
-                    </div>
-                </div>
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                        Stacked Bar Chart View of Daily Totals
-                        </a>
-                    </div>
-                    <div id="collapseTwo" class="accordion-body collapse">
-                        <div id="stackedBarChart" class="accordion-inner">
-                            Mouse-over the bars for dates.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                        Normalized Stacked Bar Chart View of % Variance in kwh use 4 six-hour periods per day
-                        </a>
-                    </div>
-                    <div id="collapseThree" class="accordion-body collapse">
-                        <div id="normalizedBarChart" class="accordion-inner">
-                            Mouse-over the bars for dates.
-                        </div>
-                    </div>
-                </div>                
+            <div class="col-xs-3">
+                <img src="img/logo1.png" width="300" >
             </div>
         </div>
-    </div>
+    </header>
+    <br>
+    <hr>
+    <br>
+    <div class="container">
+        <div class="row">
+            <p class="text-center">Click to open panels below</p>
+            <div class="col-xs-12">
+                <div class="panel-group" id="accordion2">        
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">                    
+                                <span class="log-stats"><span class="badge">0</span></span>
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                    Daily Totals (and error reports)
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div id="logContent" class="accordion-inner"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                                    Stacked Bar Chart View of Daily Totals
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div id="stackedBarChart" class="accordion-inner">
+                                    Mouse-over the bars for dates.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  <!-- row  -->
+        <br>
+        <hr>
+        <br>
+        <div class="row">
+            <p class="text-center">Each Box represents one day.  
+            The darker the color of the box, the higher the usage.
+            Mouse-over boxes to see actual numbers.</p> 
+            <div class="col-xs-12">
+                <div id="dailyTotals" class="col-xs-12"></div>
+            </div>
+        </div>
+    </div>  <!-- container -->
 
     <!-- <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script> -->
-    <script src="js/jquery-1.10.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/d3.min.js"></script>
+    <script src="js/jquery-1.10.2.min.js"></script> <!-- used by bootstrap -->
+    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>  -->
+    <script src="js/bootstrap.min.js"></script>     <!-- html framework, accordion widget -->
+    <script src="js/d3.min.js"></script>            <!-- data viz library -->
+
     <script src="app/utils.js"></script>
     <script src="app/calHeatChart.js"></script>
     <script src="app/sBarChart.js"></script>    
     <script src="app/app-kwh.js"></script>
-  </body>
+</body>
 </html>

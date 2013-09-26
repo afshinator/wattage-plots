@@ -1,117 +1,145 @@
-body {
-  background: url( ../img/ridge.gif ) repeat; /* eee */
-  /* font: 10px sans-serif; */
-  shape-rendering: crispEdges;
-}
+/* CSS for PlotWatt sample file Visualizer - by Afshin Mokhtari */
 
-.day {
-  fill: #fff;
-  stroke: #ccc;
-}
-
-.month {
-  fill: none;
-  stroke: #000;
-  stroke-width: 2px;
-}
+/* 
+**  General html styles 
+*/
+    body {
+        background: url( ../img/ridge.gif ) repeat; 
+        /* font: 10px sans-serif; */
+        shape-rendering: crispEdges;
+    }
 
 
-.CHChart {
-  padding-bottom: 30px;
-  text-align: center;
-}
+    header {
+        background: #eee;
+    }
 
-.ctr { text-align: center; }
+    a:link, a:visited {
+        color : rgb(86,0,38);
+        text-decoration: none;
+    }
 
-/* D3 demo colors 
-.RdYlGn .q0-11{fill:rgb(165,0,38)}
-.RdYlGn .q1-11{fill:rgb(215,48,39)}
-.RdYlGn .q2-11{fill:rgb(244,109,67)}
-.RdYlGn .q3-11{fill:rgb(253,174,97)}
-.RdYlGn .q4-11{fill:rgb(254,224,139)}
-.RdYlGn .q5-11{fill:rgb(255,255,191)}
-.RdYlGn .q6-11{fill:rgb(217,239,139)}
-.RdYlGn .q7-11{fill:rgb(166,217,106)}
-.RdYlGn .q8-11{fill:rgb(102,189,99)}
-.RdYlGn .q9-11{fill:rgb(26,152,80)}
-.RdYlGn .q10-11{fill:rgb(0,104,55)}
+    a:hover {
+        color: rgb(252,78,42);
+    }
+
+    .ctr { text-align: center; }
+
+
+/*
+** Bar Chart styles
 */
 
-/* Colorbrewer: yellow to orange/red to black */
-.RdYlGn .q0-11{fill:rgb(255,255,204)}
-.RdYlGn .q1-11{fill:rgb(255,237,160)}
-.RdYlGn .q2-11{fill:rgb(254,217,118)}
-.RdYlGn .q3-11{fill:rgb(254,178,76)}
-.RdYlGn .q4-11{fill:rgb(253,141,60)}
-.RdYlGn .q5-11{fill:rgb(252,78,42)}
-.RdYlGn .q6-11{fill:rgb(227,26,28)}
-.RdYlGn .q7-11{fill:rgb(189,0,38)}
-.RdYlGn .q8-11{fill:rgb(128,0,38)}
-.RdYlGn .q9-11{fill:rgb(86,0,38)}
-.RdYlGn .q10-11{fill:rgb(41,2,12)}
+    #stackedBarChart {          /* the Stacked Bar Chart section */
+      background: #999;
+        text-align: center;
+
+    }
+
+    #stackedBarChart svg {
+      font: 10px sans-serif;
+      font-color: white;
+    }
 
 
 
+/* 
+** Calendar Heat chart 
+*/
+    .CHChart {
+        padding-bottom: 30px;
+        text-align: center;
+    }
 
-.accordion {
-	  font: 14px sans-serif;
-}
+    .day {
+        fill: #fff;
+        stroke: #ccc;
+    }
 
-.accordion a {
-    outline:none;
-}
-
-.log-stats {                /* The message log counter */
-    display: block;
-    float:right;
-    width: 40px;
-    padding-top:5px;
-}
-
-
-.accordion-inner {          /* All accordion inner areas */
-  -webkit-box-shadow: inset 0px 0px 8px 3px rgba(0, 0, 0, .3);
-  box-shadow: inset 0px 0px 8px 3px rgba(0, 0, 0, .3);  
-
-  -webkit-border-radius: 7px;
-    border-radius: 7px;
-}
+    .month {
+        fill: none;
+        stroke: #000;
+        stroke-width: 2px;
+    }
 
 
-#logContent {				       /* the log section  - accordion twitter widget content div */
-	background: #999;
-	height: 300px;
-	overflow: auto;			/* add scroll bars */
-}
-
-#stackedBarChart {          /* the Stacked Bar Chart section */
-  background: #999;
-    text-align: center;
-
-}
-
-#stackedBarChart svg {
-  font: 10px sans-serif;
-  font-color: white;
-}
+    /* Colors for Calendar Heat Charts */
+    .RdYlGn .q0-11{ fill:rgb(255,255,204) }
+    .RdYlGn .q1-11{ fill:rgb(255,237,160) }
+    .RdYlGn .q2-11{ fill:rgb(254,217,118) }
+    .RdYlGn .q3-11{ fill:rgb(254,178,76) }
+    .RdYlGn .q4-11{ fill:rgb(253,141,60) }
+    .RdYlGn .q5-11{ fill:rgb(252,78,42) }
+    .RdYlGn .q6-11{ fill:rgb(227,26,28) }
+    .RdYlGn .q7-11{ fill:rgb(189,0,38) }
+    .RdYlGn .q8-11{ fill:rgb(128,0,38) }
+    .RdYlGn .q9-11{ fill:rgb(86,0,38) }
+    .RdYlGn .q10-11{ fill:rgb(41,2,12) }
 
 
 
+/*
+**  twitter bootstrap specific 
+*/
 
-/* general */
-a:link, a:visited {
-  color : rgb(86,0,38);
-  text-decoration: none;
-}
-
-a:hover {
-    color: rgb(252,78,42);
-}
+    .container {      /* disable responsive featurs of bootstrap 3 */
+      max-width: none !important; 
+      width: 1024px; /* 970px; */
+    }
 
 
 
-/*  bootstrap */
+    .accordion-inner {          /* All accordion inner areas */
+      -webkit-box-shadow: inset 0px 0px 8px 3px rgba(0, 0, 0, .3);
+      box-shadow: inset 0px 0px 8px 3px rgba(0, 0, 0, .3);  
 
-.label {
-   font-size:95%;   /* instead of 75% */
-}
+      -webkit-border-radius: 7px;
+        border-radius: 7px;
+    }
+
+
+    #logContent {                   /* the log section  - accordion twitter widget content div */
+    	background: #999;
+    	height: 300px;
+    	overflow: auto;            /* add scroll bars */
+    }
+
+    .panel {
+      background-color: #ddd ;
+    }
+
+    .panel-heading { 
+      background-color: #ddd !important; 
+    }
+
+    .panel a {
+        outline:none;
+    }
+
+
+    .log-stats {                /* The message log counter added to Daily Totals accordion */
+        display: block;
+        float:right;
+        width: 40px;
+        padding-top:5px;
+    }
+
+
+/*
+** to top button, see utils.js for implementation
+*/
+    .back-to-top {
+        position: fixed;
+        bottom: 2em;
+        right: 0px;
+        text-decoration: none;
+        color: #000000;
+        background-color: rgba(235, 235, 235, 0.80);
+        font-size: 12px;
+        padding: 1em;
+        display: none;
+    }
+
+    .back-to-top:hover {    
+        background-color: rgba(135, 135, 135, 0.50);
+    }

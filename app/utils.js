@@ -1,4 +1,6 @@
-// utils.js
+// utils.js - Afshin Mokhtari
+//
+// requires JQuery
 
 
 
@@ -61,8 +63,6 @@ var kwh = (function ($, my) {
                 count = ( count$.text() ) * 1;  // multiply casts it to number
                 count += 1;
                 count$.text(count);
-
-               // msg = '<strong>' + count + ': Daily Totals</strong> : ' + msg;
             }
 
             if ( wrapStr ) {
@@ -95,6 +95,29 @@ var kwh = (function ($, my) {
     };
 
 
+
+    // http://www.developerdrive.com/2013/07/using-jquery-to-add-a-dynamic-back-to-top-floating-button-with-smooth-scroll/
+    // Adds a nicely animated To Top button to the page.
+    // Requires JQuery
+    my.init_ToTopButton = function() {
+        var offset = 220;
+        var duration = 500;
+
+        $('body').append('<a href="#" class="back-to-top">Back to Top</a>');
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > offset) {
+                $('.back-to-top').fadeIn(duration);
+            } else {
+                $('.back-to-top').fadeOut(duration);
+            }
+        });
+        
+        $('.back-to-top').click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, duration);
+            return false;
+        });
+    };
 
     return my;
 }(jQuery, kwh || {}));

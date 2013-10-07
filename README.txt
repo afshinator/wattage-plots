@@ -1,12 +1,12 @@
-This little web app will show visualizations of the data from the excel file downloaded from:
+Wattage Plots (of data pulled in from .csv file, using D3.js library)
 
-http://plotwatt.com/plotwatt_appliance_data.csv
+- Afshin Mokhtari, July 2013
 
-If you're accessing these files from a web server, pull up index.html as normal and everything should
-work fine if you preserved the directory structure it was archived as.
+Data is from http://plotwatt.com/plotwatt_appliance_data.csv
 
-If you directly drag index.html from your desktop into the browser, Chrome and IE will have problems; 
-best to use Firefox.
+If you're accessing these files from a web server, pull up index.html as normal and everything should work fine if you preserved the directory structure.
+
+If you directly drag index.html from your desktop into the browser, Chrome and IE will have problems accessing local files on desktop; Firefox will let you though.
 
 ---
 

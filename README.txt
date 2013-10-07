@@ -1,14 +1,21 @@
 Wattage Plots (of data pulled in from .csv file, using D3.js library)
 
-- Afshin Mokhtari, July 2013
+By: Afshin Mokhtari, Aug 2013
 
-Data is from http://plotwatt.com/plotwatt_appliance_data.csv.  Look and feel mostly thanks to Twitters bootstrap.
+Data: from folks at PlotWatt.com.  Look and feel mostly thanks to Twitters bootstrap.
+
+Motivation: Learn me some D3.  Have some fun.
+
+Battle Plan: Encapsulate some D3 graphs, and use that power (instantiation of mixed bag of graphs at will) to show some data in a meaningful way. 
+
+-- 
+How to view my app:
 
 If you're accessing these files from a web server, pull up index.html as normal and everything should work fine if you preserved the directory structure.
 
 If you directly drag index.html from your desktop into the browser, Chrome and IE will have problems accessing local files on desktop; Firefox will let you though.
 
-If you feel like using a CDN instead of my references to the .js files from index.html, go ahead and modify those <script> lines at the bottom of index.html.
+If you feel like using a CDN instead of my references to the .js files from index.html, go ahead and modify those <script> lines at the bottom of index.html.  This project uses the D3.js visualiation library, and Twitters Bootstrap css & js, and so also Jquery.
 
 ---
 
@@ -28,7 +35,7 @@ dominates the variance in use.
 
 Last I wanted to show the relative variance in use of all appliances totals split up
 into the 4 sectors of the day from which we have data... but alas the normalized
-bar chart I made looked very ugly and wasn't actually too informative - so I axed it.
+bar chart I made looked very ugly and wasn't too informative - so I axed it.
 
 
 - Afshin Mokhtari

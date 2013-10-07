@@ -2,11 +2,13 @@ Wattage Plots (of data pulled in from .csv file, using D3.js library)
 
 - Afshin Mokhtari, July 2013
 
-Data is from http://plotwatt.com/plotwatt_appliance_data.csv
+Data is from http://plotwatt.com/plotwatt_appliance_data.csv.  Look and feel mostly thanks to Twitters bootstrap.
 
 If you're accessing these files from a web server, pull up index.html as normal and everything should work fine if you preserved the directory structure.
 
 If you directly drag index.html from your desktop into the browser, Chrome and IE will have problems accessing local files on desktop; Firefox will let you though.
+
+If you feel like using a CDN instead of my references to the .js files from index.html, go ahead and modify those <script> lines at the bottom of index.html.
 
 ---
 

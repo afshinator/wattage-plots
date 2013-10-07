@@ -8,7 +8,7 @@ Motivation: Learn me some D3.  Have some fun.
 
 Battle Plan: Encapsulate some D3 graphs, and use that power (instantiation of mixed bag of graphs at will) to show some data in a meaningful way. 
 
-Disclaimer: Comments and criticisms welcome.  
+Disclaimer: It is what it is, it be what it be.
 
 -- 
 How to view my app, and be like 'wow!, not rocket science, but pretty cool...':
@@ -38,3 +38,5 @@ dominates the variance in use.
 Last I wanted to show the relative variance in use of all appliances totals split up
 into the 4 sectors of the day from which we have data... but alas the normalized
 bar chart I made looked very ugly and wasn't too informative - so I axed it for now.
+
+Comments and criticisms welcome.  

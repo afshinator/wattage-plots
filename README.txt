@@ -8,14 +8,16 @@ Motivation: Learn me some D3.  Have some fun.
 
 Battle Plan: Encapsulate some D3 graphs, and use that power (instantiation of mixed bag of graphs at will) to show some data in a meaningful way. 
 
+Disclaimer: Comments and criticisms welcome.  
+
 -- 
-How to view my app:
+How to view my app, and be like 'wow!, not rocket science, but pretty cool...':
 
 If you're accessing these files from a web server, pull up index.html as normal and everything should work fine if you preserved the directory structure.
 
 If you directly drag index.html from your desktop into the browser, Chrome and IE will have problems accessing local files on desktop; Firefox will let you though.
 
-If you feel like using a CDN instead of my references to the .js files from index.html, go ahead and modify those <script> lines at the bottom of index.html.  This project uses the D3.js visualiation library, and Twitters Bootstrap css & js, and so also Jquery.
+If you feel like using a CDN instead of my references to the .js files from index.html, go ahead and modify those <script> lines at the bottom of index.html.  This project uses the D3.js visualiation library, and Twitters Bootstrap css & js, and so also JQuery.
 
 ---
 
@@ -35,7 +37,4 @@ dominates the variance in use.
 
 Last I wanted to show the relative variance in use of all appliances totals split up
 into the 4 sectors of the day from which we have data... but alas the normalized
-bar chart I made looked very ugly and wasn't too informative - so I axed it.
-
-
-- Afshin Mokhtari
+bar chart I made looked very ugly and wasn't too informative - so I axed it for now.

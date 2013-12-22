@@ -53,4 +53,4 @@ Last I wanted to show the relative variance in use of all appliances totals spli
 Comments and criticisms welcome.
 
 [D3 visualization library]:http://d3js.org/
-[logo]:https://github.com/afshinator/wattage-plots/blob/master/img/logo1.png "PlotWatt logo"
+[logo]:http://acuafshin.com/plotwatt/img/logo1.png "PlotWatt logo"

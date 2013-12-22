@@ -11,15 +11,15 @@ Wattage Plots shows meaningful visualizations of kilo-watt per hour energy usage
 ----
 ### Purpose:
 - Learn me some D3.  
-- Build some javascript classes that encapsulate details of specific chart types (like bar-chart, heat-chart) that otherwise require expertise in D3.
-- Provide visualizations of tabular, numberical data of energy usage in a manner that makes it easy to see patterns in the data.
-- Have some fun, show some skills, learn learn learn.
+- Build & use javascript classes that encapsulate details of specific chart types (like bar-chart, heat-chart) that otherwise require a variety of mixings of D3 elements.
+- Provide visualizations of tabular numerical data in a manner that makes it easy to see patterns in the data.
+- Have some fun, show some skills, learn new ones.
 
 #### Data: 
-from PlotWatt.com, in the form of a .csv file (included in the project tree).
+- From PlotWatt.com, in the form of a .csv file (included in the project tree).
 
 #### Tools:
-- Javascript,HTML, CSS
+- Javascript, HTML, CSS
 - Twitters bootstrap
 - D3.js visualization libarary
 
@@ -31,9 +31,9 @@ The quickest way is to click on the link above; of course you can always 'git cl
 
 #### Please Note:
 
-If you're accessing these files from a web server, pull up index.html as normal and everything should work fine if you preserved the directory structure.
+If you're running the project from a web server, browse to the project directory root or pull index.html into your browser as normal, and everything will work fine if you've preserved the directory structure of the source tree.
 
-If you pulled the project down to your local machine and want to  drag index.html from your desktop into the browser, <b>Chrome and IE will not let the app access your local filesystem</b> to pull in the csv file where all the data lives; Firefox will though!</i>
+If you pulled the project down to your local machine and want to drag index.html from your file system into the browser, <b>Chrome and IE will not let the app access your local file system</b> to pull in the csv file where all the data lives; Firefox will though!</i>  ( Its a security issue, find out more by looking into cross-origin request policies.) 
 
 
 ---
@@ -44,11 +44,11 @@ Looking at the data I saw that it primarily varied based on time of year, so I c
 
 There are also calendar heat charts for totals per day broken down by appliance type.  What is so nice about the breakdown by appliance type is that you can see stuff like the fact that <b>they only cook on weekends!</b>
 
-Also, speaking on implementation, displaying a variety of heat-charts was simplified by the work I did to encapsulate the heat-chart functionality into its own class, ready to be instantiated.  Most of the D3 code I found out in the wild was not written in a manner that allowed for easy chart-type instantiation like this.
+Briefly on implementation, displaying a variety of charts was simplified by the work I did to encapsulate the charts functionality into their own classes, ready to be instantiated will nifty options.
 
-I also wanted to present which appliance type varied the most.  The <b>stacked bar chart</b> does a good job of that, as well as showing how temperature control in general dominates the variance in use.
+With the data, I also wanted to present which appliance types usage varied the most.  The <b>stacked bar chart</b> does a good job of that, and you can also see at a glance how <b>temperature control in general dominates the variance in use</b>.
 
-Last I wanted to show the relative variance in use of all appliances totals split up into the 4 sectors of the day from which we have data... but alas the normalized bar chart I made looked very ugly and wasn't too informative - so I took it out!
+Last, I wanted to show the relative variance in use of all appliances totals split up into the 4 sectors of the day from which we have data... but alas the normalized bar chart I made really wasn't too informative - so I took it out!
 
 Comments and criticisms welcome.
 

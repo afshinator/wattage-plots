@@ -3,7 +3,7 @@ Wattage Plots
 
 Wattage Plots shows meaningful visualizations of kilo-watt per hour energy usage of data pulled in from a CSV file.   Data is displayed using the fantastic data-driven [D3 visualization library].
 
-![Picture](https://github.com/afshinator/wattage-plots/blob/master/img/logo1.png)
+![alt text][logo]
 
 ##### By: [Afshin Mokhtari](https://github.com/afshinator/wattage-plots), Aug 2013
 [Click here](http://acuafshin.com/plotwatt/) to check it out!
@@ -53,3 +53,4 @@ Last I wanted to show the relative variance in use of all appliances totals spli
 Comments and criticisms welcome.
 
 [D3 visualization library]:http://d3js.org/
+[logo]:https://github.com/afshinator/wattage-plots/blob/master/img/logo1.png "PlotWatt logo"

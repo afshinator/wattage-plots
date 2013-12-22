@@ -11,7 +11,7 @@ Wattage Plots shows meaningful visualizations of kilo-watt per hour energy usage
 ----
 ### Purpose:
 - Learn me some D3.  
-- Build & use javascript classes that encapsulate details of specific chart types (like bar-chart, heat-chart) that otherwise require a variety of mixings of D3 elements.
+- Build & use javascript classes that encapsulate details of specific chart types (like bar-chart, heat-chart) that otherwise require a variety of complex and easy-to-forget mixings of D3 elements.
 - Provide visualizations of tabular numerical data in a manner that makes it easy to see patterns in the data.
 - Have some fun, show some skills, learn new ones.
 

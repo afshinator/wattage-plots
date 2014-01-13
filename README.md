@@ -6,7 +6,7 @@ Wattage Plots shows meaningful visualizations of kilo-watt per hour energy usage
 ![alt text][logo]
 
 ##### By: [Afshin Mokhtari](https://github.com/afshinator), Aug 2013
-[Click here](http://acuafshin.com/plotwatt/) to check it out!
+[Click here](http://drivelinemoto.com/plotwatt/) to check it out!
 
 ----
 ### Purpose:
